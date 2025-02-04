@@ -13,23 +13,12 @@ dotenv.config();
 const app = express();
 
 const config = {
-  authRequired: false, // Ensure authRequired is set to false
   auth0Logout: true,
-  // secret: process.env.SECRET, // Remove this line
   baseURL: process.env.BASE_URL,
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
   idpLogout: true, // Ensure idpLogout is set to true
   routes: true, // Set routes to true
-
-  session: {
-    absoluteDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
-    cookie: {
-      domain: "jobcamr.onrender.com",
-      secure: process.env.NODE_ENV === 'production', // Set secure only in production
-      sameSite: "None",
-    },
-  },
 };
 
 app.use(
