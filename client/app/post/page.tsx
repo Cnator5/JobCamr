@@ -33,7 +33,7 @@ function page() {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      // router.push("https://jobfindr-q1cl.onrender.com/login");
+      // router.push("https://jobcamr.onrender.com/login");
       router.push("http://localhost:8000/login");
     }
   }, [isAuthenticated]);

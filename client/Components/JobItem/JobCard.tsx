@@ -105,7 +105,7 @@ function JobCard({ job, activeJob }: JobProps) {
           onClick={() => {
             isAuthenticated
               ? handleLike(job._id)
-              // : router.push("https://jobfindr-q1cl.onrender.com/login");
+              // : router.push("https://jobcamr.onrender.com/login");
               : router.push("/login");
           }}
         >
@@ -127,9 +127,9 @@ function JobCard({ job, activeJob }: JobProps) {
       </div>
 
       <p>
-        {`companyDescription.length > 100
-          ? ${companyDescription.substring(0, 100)}...
-          : companyDescription`}
+        {companyDescription.length > 100
+          ? `${companyDescription.substring(0, 100)}...`
+          : companyDescription}
       </p>
 
       <Separator />

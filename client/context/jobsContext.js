@@ -170,7 +170,7 @@ import { useRouter } from "next/navigation";
 
 const JobsContext = createContext();
 
-// axios.defaults.baseURL = "https://jobfindr-q1cl.onrender.com";
+// axios.defaults.baseURL = "https://jobcamr.onrender.com";
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 

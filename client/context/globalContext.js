@@ -78,7 +78,7 @@ import React, {
   
   const GlobalContext = createContext();
   
-  // axios.defaults.baseURL = "https://jobfindr-q1cl.onrender.com";
+  // axios.defaults.baseURL = "https://jobcamr.onrender.com";
   axios.defaults.baseURL = "http://localhost:8000/api";
   axios.defaults.withCredentials = true;
   
