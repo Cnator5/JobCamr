@@ -100,7 +100,7 @@ function page() {
                 onClick={() => {
                   isAuthenticated
                     ? handleLike(job._id)
-                    : router.push("http://localhost:8000/login");
+                    : router.push("https://jobcamr.onrender.com/login");
                 }}
               >
                 {isLiked ? bookmark : bookmarkEmpty}

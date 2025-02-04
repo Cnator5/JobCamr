@@ -24,13 +24,13 @@ const config = {
     postLogoutRedirect: process.env.CLIENT_URL,
     callback: "/callback",
     logout: "/logout",
-    login: "/login",
+    login: "/login", // Set login to the same as the callback route
   },
 
   session: {
     absoluteDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
     cookie: {
-      domain: "jobfindr-q1cl.onrender.com",
+      domain: "jobcamr.onrender.com",
       secure: process.env.NODE_ENV === 'production', // Set secure only in production
       sameSite: "None",
     },
