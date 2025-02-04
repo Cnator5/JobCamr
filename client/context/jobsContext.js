@@ -5,7 +5,7 @@
 
 // const JobsContext = createContext();
 
-// axios.defaults.baseURL = 'http://localhost:8000';
+// axios.defaults.baseURL = 'https://jobcamr.onrender.com';
 // axios.defaults.withCredentials = true;
 
 // export const JobsContextProvider = ({ children }) => {
@@ -171,7 +171,7 @@ import { useRouter } from "next/navigation";
 const JobsContext = createContext();
 
 // axios.defaults.baseURL = "https://jobcamr.onrender.com";
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://jobcamr.onrender.com";
 axios.defaults.withCredentials = true;
 
 export const JobsContextProvider = ({ children }) => {

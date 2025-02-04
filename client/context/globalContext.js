@@ -4,7 +4,7 @@
 // // Create a context
 // const GlobalContext = createContext();
 
-// axios.defaults.baseURL = "http://localhost:8000/api";
+// axios.defaults.baseURL = "https://jobcamr.onrender.com/api";
 // axios.defaults.withCredentials = true;
 
 // // Create a provider
@@ -79,7 +79,7 @@ import React, {
   const GlobalContext = createContext();
   
   // axios.defaults.baseURL = "https://jobcamr.onrender.com";
-  axios.defaults.baseURL = "http://localhost:8000/api";
+  axios.defaults.baseURL = "https://jobcamr.onrender.com/api";
   axios.defaults.withCredentials = true;
   
   export const GlobalContextProvider = ({ children }) => {

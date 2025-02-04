@@ -54,7 +54,7 @@ function Profile() {
           className="cursor-pointer"
           onClick={() => {
             // router.push("https://jobcamr.onrender.com/logout");
-            router.push("http://localhost:8000/logout");
+            router.push("https://jobcamr.onrender.com/logout");
           }}
         >
           <LogOut className="mr-2 h-4 w-4" />

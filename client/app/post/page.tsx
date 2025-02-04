@@ -34,7 +34,7 @@ function page() {
   useEffect(() => {
     if (!loading && !isAuthenticated) {
       // router.push("https://jobcamr.onrender.com/login");
-      router.push("http://localhost:8000/login");
+      router.push("https://jobcamr.onrender.com/login");
     }
   }, [isAuthenticated]);
   return (
