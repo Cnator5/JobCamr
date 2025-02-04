@@ -118,7 +118,7 @@ function JobSkills() {
                 <button
                   onClick={() => handleRemoveTag(tag)}
                   className="text-secondary-foreground hover:text-red-500 focus:outline-none"
-                  aria-label={Remove tag ${tag}}
+                  aria-label={`Remove tag ${tag}`}
                 >
                   <X size={14} />
                 </button>
