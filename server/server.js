@@ -20,12 +20,7 @@ const config = {
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
   idpLogout: true, // Ensure idpLogout is set to true
-  routes: {
-    postLogoutRedirect: process.env.CLIENT_URL,
-    callback: "/callback",
-    logout: "/logout",
-    login: "/login", // Set login to the same as the callback route
-  },
+  routes: true, // Set routes to true
 
   session: {
     absoluteDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
