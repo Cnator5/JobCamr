@@ -1,19 +1,7 @@
-// import React from 'react'
-
-// function jobForm () {
-//   return (
-//     <div>
-//       JobForm
-//     </div>
-//   )
-// }
-
-// export default jobForm;
-
 "use client";
 import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
-// import MyJob from "@/Components/JobItem/MyJob";
+import MyJob from "@/Components/JobItem/MyJob"; // Add this import
 import { useGlobalContext } from "@/context/globalContext";
 import { useJobsContext } from "@/context/jobsContext";
 import { Job } from "@/types/types";
