@@ -1,25 +1,37 @@
 "use client";
-import React, { useEffect } from "react";
-import { Job } from "@/types/types";
-import { useJobsContext } from "@/context/jobsContext";
-import Image from "next/image";
-import { CardTitle } from "../ui/card";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Pencil, Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useGlobalContext } from "@/context/globalContext";
+import { useJobsContext } from "@/context/jobsContext";
+import { Job } from "@/types/types";
+import { Calendar } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { Separator } from "../ui/separator";
+import formatMoney from "@/utils/formatMoney";
 import { bookmark, bookmarkEmpty } from "@/utils/Icons";
-import { formatDates } from './../../utils/formatDates';
+import { formatDates } from "@/utils/formatDates";
 
 interface JobProps {
   job: Job;
+  activeJob?: boolean;
 }
 
-function MyJob({ job }: JobProps) {
-  const { deleteJob, likeJob } = useJobsContext();
-  const { userProfile, isAuthenticated, getUserProfile } = useGlobalContext();
+function MyJob({ job, activeJob }: JobProps) {
+  const { likeJob } = useJobsContext();
+  const { userProfile, isAuthenticated } = useGlobalContext();
   const [isLiked, setIsLiked] = React.useState(false);
+
+  const {
+    title,
+    salaryType,
+    salary,
+    createdBy,
+    applicants,
+    jobType,
+    createdAt,
+  } = job;
+
+  const { name, profilePicture } = createdBy;
 
   const router = useRouter();
 
@@ -29,98 +41,116 @@ function MyJob({ job }: JobProps) {
   };
 
   useEffect(() => {
-    if (isAuthenticated && job.createdBy._id) {
-      getUserProfile(job.createdBy._id);
-    }
-  }, [isAuthenticated, job.createdBy._id]);
-
-  useEffect(() => {
-    if (userProfile?._id) {
-      setIsLiked(job.likes.includes(userProfile?._id));
-    }
+    setIsLiked(job.likes.includes(userProfile._id));
   }, [job.likes, userProfile._id]);
 
+  const companyDescription =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc.";
+
+  const jobTypeBg = (type: string) => {
+    switch (type) {
+      case "Full Time":
+        return "bg-green-500/20 text-green-600";
+      case "Part Time":
+        return "bg-purple-500/20 text-purple-600";
+      case "Contract":
+        return "bg-red-500/20 text-red-600";
+      case "Internship":
+        return "bg-indigo-500/20 text-indigo-600";
+      default:
+        return "bg-gray-500/20 text-gray-600";
+    }
+  };
+
+  const createdAtDate = new Date(createdAt);
+
   return (
-    <div className="p-8 bg-white rounded-xl flex flex-col gap-5">
+    <div
+      className={`p-8 rounded-xl flex flex-col gap-5
+    ${
+      activeJob
+        ? "bg-gray-50 shadow-md border-b-2 border-[#7263f3]"
+        : "bg-white"
+    }`}
+    >
       <div className="flex justify-between">
         <div
-          className="flex items-center space-x-4 mb-2 cursor-pointer"
+          className="group flex gap-1 items-center cursor-pointer"
           onClick={() => router.push(`/job/${job._id}`)}
         >
-          <Image
-            alt={logo}
-            src={job.createdBy.profilePicture || "/joblogo-removebg-preview.png"}
-            width={48}
-            height={48}
-            className="rounded-full shadow-sm"
-          />
+          <div className="w-12 h-12 bg-gray-200 rounded-md flex items-center justify-center">
+            <Image
+              src={profilePicture || "/client/public/business-meeting-talking-about-job_53876-94836-removebg-preview.png"}
+              alt={name || "User"}
+              width={40}
+              height={40}
+              className="rounded-md"
+            />
+          </div>
 
-          <div>
-            <CardTitle className="text-xl font-bold truncate">
-              {job.title}
-            </CardTitle>
-            <p className="text-sm text-muted-foreground">
-              {job.createdBy.name}
+          <div className="flex flex-col gap-1">
+            <h4 className="group-hover:underline font-bold">{title}</h4>
+            <p className="text-xs">
+              {name}: {applicants.length}{" "}
+              {applicants.length > 1 ? "Applicants" : "Applicant"}
             </p>
           </div>
         </div>
+
         <button
-          className={`text-2xl ${
-            isLiked ? "text-[#7263f3]" : "text-gray-400"
-          } `}
+          className={`text-2xl ${isLiked ? "text-[#7263f3]" : "text-gray-400"} `}
           onClick={() => {
             isAuthenticated
               ? handleLike(job._id)
-              // : router.push("https://jobfindr-q1cl.onrender.com/login");
               : router.push("/login");
           }}
         >
           {isLiked ? bookmark : bookmarkEmpty}
         </button>
       </div>
-      <div>
-        <p className="text-sm text-muted-foreground mb-2">{job.location}</p>
-        <p className="text-sm text-muted-foreground mb-4">
-          Posted {formatDates(job.createdAt)}
+
+      <div className="flex items-center gap-2">
+        {jobType.map((type, index) => (
+          <span
+            key={index}
+            className={`py-1 px-3 text-xs font-medium rounded-md border ${jobTypeBg(
+              type
+            )}`}
+          >
+            {type}
+          </span>
+        ))}
+      </div>
+
+      <p>
+        {`companyDescription.length > 100
+          ? ${companyDescription.substring(0, 100)}...
+          : companyDescription`}
+      </p>
+
+      <Separator />
+
+      <div className="flex justify-between items-center gap-6">
+        <p>
+          <span className="font-bold">{formatMoney(salary, "GBP")}</span>
+          <span className="font-medium text-gray-400 text-lg">
+            /
+            {salaryType === "Yearly"
+              ? "pa"
+              : salaryType === "Monthly"
+              ? "pcm"
+              : salaryType === "Weekly"
+              ? "pw"
+              : "ph"}
+          </span>
         </p>
 
-        <div className="flex justify-between">
-          <div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {job.skills.map((skill, index) => (
-                <Badge key={index} variant="secondary">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {job.tags.map((skill, index) => (
-                <Badge key={index} variant="outline">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-          {job.createdBy._id === userProfile?._id && (
-            <div className="self-end">
-              <Button variant="ghost" size="icon" className="text-gray-500">
-                <Pencil size={14} />
-                <span className="sr-only">Edit job</span>
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-gray-500
-                hover:text-red-500"
-                onClick={() => deleteJob(job._id)}
-              >
-                <Trash size={14} />
-                <span className="sr-only">Delete job</span>
-              </Button>
-            </div>
-          )}
-        </div>
+        <p className="flex items-center gap-2 text-sm text-gray-400">
+          <span className="text-lg">
+            <Calendar size={16} />
+          </span>
+          Posted: {formatDates(createdAtDate)}
+        </p>
       </div>
     </div>
   );

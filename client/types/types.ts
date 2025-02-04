@@ -5,6 +5,7 @@ export type Job = {
   description: string;
   salary: number;
   createdBy: {
+    _id: string;
     name: string;
     profilePicture: string;
   };
