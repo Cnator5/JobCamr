@@ -1,16 +1,3 @@
-// import Header from '@/Components/Header'
-// import React from 'react'
-
-// function page () {
-//   return (
-//     <div>
-//       <Header />
-//     </div>
-//   )
-// }
-
-// export default page
-
 "use client";
 import Filters from "@/Components/Filters";
 import Footer from "@/Components/Footer";
@@ -18,11 +5,10 @@ import Header from "@/Components/Header";
 import JobCard from "@/Components/JobItem/JobCard";
 import SearchForm from "@/Components/SearchForm";
 import { useJobsContext } from "@/context/jobsContext";
-// import { Job } from "@/types/types";
+import { Job } from "@/types/types";
 import { grip, list, table } from "@/utils/Icons";
 import Image from "next/image";
 import React from "react";
-import { Job } from '@/types/types';
 
 function page() {
   const { jobs, filters } = useJobsContext();
@@ -52,7 +38,7 @@ function page() {
 
           if (filters.fullStack && job.tags.includes("Full Stack")) return true;
           if (filters.backend && job.tags.includes("Backend")) return true;
-          if (filters.devOps && Job.tags.includes("DevOps")) return true;
+          if (filters.devOps && job.tags.includes("DevOps")) return true;
           if (filters.uiUx && job.tags.includes("UI/UX")) return true;
         })
       : jobs;

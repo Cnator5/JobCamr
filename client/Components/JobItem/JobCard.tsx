@@ -8,9 +8,8 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { Separator } from "../ui/separator";
 import formatMoney from "@/utils/formatMoney";
-// import { formatDates } from "@/utils/fotmatDates";
 import { bookmark, bookmarkEmpty } from "@/utils/Icons";
-import { formatDates } from './../../utils/formatDates';
+import { formatDates } from "@/utils/formatDates";
 
 interface JobProps {
   job: Job;
@@ -63,6 +62,8 @@ function JobCard({ job, activeJob }: JobProps) {
         return "bg-gray-500/20 text-gray-600";
     }
   };
+
+  const createdAtDate = new Date(createdAt);
 
   return (
     <div
@@ -152,7 +153,7 @@ function JobCard({ job, activeJob }: JobProps) {
           <span className="text-lg">
             <Calendar size={16} />
           </span>
-          Posted: {formatDates(createdAt)}
+          Posted: {formatDates(createdAtDate)}
         </p>
       </div>
     </div>

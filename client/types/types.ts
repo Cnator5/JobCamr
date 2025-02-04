@@ -1,22 +1,18 @@
-interface Job {
-    _id: string;
-    title: string;
-    description: string;
-    location: string;
-    salary: number;
-    salaryType: "Yearly" | "Monthly" | "Weekly" | "Hourly";
-    negotiable: boolean;
-    jobType: string[];
-    tags: string[];
-    likes: string[];
-    skills: string[];
-    applicants: string[];
-    createdBy: {
-      _id: string;
-      profilePicture: string;
-      name: string;
-    };
-    createdAt: string;
-    updatedAt: string;
-  }
-  export type { Job };
+export type Job = {
+  _id: string;
+  title: string;
+  location: string;
+  description: string;
+  salary: number;
+  createdBy: {
+    name: string;
+    profilePicture: string;
+  };
+  applicants: string[];
+  jobType: string[];
+  createdAt: string;
+  salaryType: string;
+  negotiable: boolean;
+  tags: string[];
+  likes: string[];
+};
