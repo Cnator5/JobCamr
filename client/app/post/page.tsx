@@ -1,25 +1,3 @@
-// import Header from '@/Components/Header';
-// import React from 'react';
-// import JobForm from './../../Components/JobPost/JobForm';
-
-// function Page() { // Fix function definition
-//   return (
-//     <div>
-//       <Header />
-//       {/* Add content here */}
-//       <h2 className='flex-1 pt-8 mx-auto text-4xl font-bold text-center'>
-//         Create a post
-//       </h2>
-
-//       <div>
-//         <JobForm />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Page;
-
 "use client";
 import Header from "@/Components/Header";
 import JobForm from "@/Components/JobPost/JobForm";
@@ -33,7 +11,6 @@ function page() {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      // router.push("https://jobcamr.onrender.com/login");
       router.push("https://jobcamr.onrender.com/login");
     }
   }, [isAuthenticated]);
