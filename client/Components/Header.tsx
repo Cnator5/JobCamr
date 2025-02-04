@@ -82,14 +82,14 @@ return (
         ) : (
           <div className="flex items-center gap-6">
             <Link
-              href="/login"
+              href="https://jobcamr.onrender.com/login"
               className="py-2 px-6 rounded-md border flex items-center gap-4 bg-[#4fd1c5] text-white border-[#4fd1c5] hover:bg-[#38b2ac] transition-all duration-300"
             >
               <LogIn className="w-4 h-4" />
               Login
             </Link>
             <Link
-              href="/register"
+              href="https://jobcamr.onrender.com/register"
               className="py-2 px-6 rounded-md border flex items-center gap-4 border-[#4fd1c5] text-[#4fd1c5] hover:bg-[#4fd1c5]/10 transition-all duration-300"
             >
               <UserPlus className="w-4 h-4" />

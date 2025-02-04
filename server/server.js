@@ -13,9 +13,9 @@ dotenv.config();
 const app = express();
 
 const config = {
-  // authRequired: false, // Remove this line
+  authRequired: false, // Ensure authRequired is set to false
   auth0Logout: true,
-  secret: process.env.SECRET,
+  // secret: process.env.SECRET, // Remove this line
   baseURL: process.env.BASE_URL,
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
