@@ -176,7 +176,6 @@ function page() {
                   toast.error("You have already applied to this job");
                 }
               } else {
-                // router.push("https://jobcamr.onrender.com/login");
                 router.push("https://jobcamr.onrender.com/login");
               }
             }}
