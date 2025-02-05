@@ -17,8 +17,8 @@ const config = {
   baseURL: process.env.BASE_URL,
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
-  idpLogout: true, // Ensure idpLogout is set to true
-  routes: true, // Set routes to true
+  routes: true, // Change routes to a boolean
+  // Remove the session property
 };
 
 app.use(
