@@ -12,6 +12,11 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "https://jobcamr-66zm1pst8-cnator5s-projects.vercel.app"
+];
+
 const config = {
   auth0Logout: true,
   baseURL: process.env.BASE_URL,
@@ -23,7 +28,13 @@ const config = {
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
