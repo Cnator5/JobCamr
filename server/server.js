@@ -94,6 +94,15 @@ app.get("/check-auth", (req, res) => {
   }
 });
 
+// Add error handling for the /api/v1/jobs route
+app.get("/api/v1/jobs", async (req, res) => {
+  try {
+    // Your logic to fetch jobs
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error", message: error.message });
+  }
+});
+
 // routes
 const routeFiles = fs.readdirSync("./routes");
 
