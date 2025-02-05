@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="py-12 bg-white">
       <div className="mx-auto px-4 text-center text-black">
-        <p>&copy; {new Date().getFullYear()} JobFinder. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} JobCamr. All rights reserved.</p>
       </div>
     </footer>
   );
